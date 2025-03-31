@@ -9,12 +9,12 @@ from sshtunnel import SSHTunnelForwarder
 # read from os
 use_ssh = os.environ.get('USE_SSH')
 ssh_host = os.environ.get('SSH_HOST')
-ssh_port = os.environ.get('SSH_PORT')
+ssh_port = int(os.environ.get('SSH_PORT', 22))
 ssh_username = os.environ.get('SSH_USERNAME')
 private_key = os.environ.get('SSH_PRIVATE_KEY')
 
 db_host = os.environ.get('DB_HOST')
-db_port = os.environ.get('DB_PORT')
+db_port = int(os.environ.get('DB_PORT'))
 db_username = os.environ.get('DB_USERNAME')
 db_password = os.environ.get('DB_PASSWORD')
 db_name = os.environ.get('DB_NAME')
