@@ -1,4 +1,4 @@
-import os, json, hashlib
+import os, json, hashlib, sys
 from typing import Optional
 from datetime import datetime, date
 from mcp.server.fastmcp import FastMCP
@@ -7,7 +7,7 @@ from sshtunnel import SSHTunnelForwarder
 
 ### Database ###
 # read from os
-print('Reading environment variables')
+print('Reading environment variables', file=sys.stderr)
 use_ssh = os.environ.get('USE_SSH')
 ssh_host = os.environ.get('SSH_HOST')
 ssh_port = int(os.environ.get('SSH_PORT', 22))
@@ -20,7 +20,7 @@ db_username = os.environ.get('DB_USERNAME')
 db_password = os.environ.get('DB_PASSWORD')
 db_name = os.environ.get('DB_NAME')
 
-print('Environment variables read', use_ssh)
+print('Environment variables read', use_ssh, file=sys.stderr)
 
 def get_engine(readonly=True, ssh_host=None, ssh_port=None, ssh_username=None, private_key=None, db_host=None, db_port=None, db_username=None, db_password=None, db_name=None):
     if use_ssh == 'true':
